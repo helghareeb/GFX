@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+<canvas id="myCanvas" width="500" height="400">
+    Your browser does not support the <code>&lt;canvas&gt;</code> element.
+  </canvas>
+  <script>
+const canvas = document.getElementById("myCanvas");
+const ctx = canvas.getContext("2d");
+const FILL_COLOR = "skyblue";
+
+ctx.beginPath();
+ctx.moveTo(50, 20);
+ctx.quadraticCurveTo(20, 100, 50, 180);  // control point (20,100), end point (50,180)
+ctx.stroke();
+
+ctx.beginPath();
+ctx.moveTo(75, 40);
+ctx.bezierCurveTo(75, 37, 70, 25, 50, 25);
+ctx.bezierCurveTo(20, 25, 20, 62, 50, 62);
+ctx.fill();
+
+ctx.shadowColor = "rgba(0,0,0,0.3)"; // semi-transparent black shadow
+ctx.shadowBlur = 4;
+ctx.shadowOffsetX = 5;
+ctx.shadowOffsetY = 5;
+
+ctx.font = "30px Georgia";
+ctx.fillStyle = "orange";
+ctx.fillText("Shadowed Text", 50, 100);
+
+
+</script>
+</body>
+</html>

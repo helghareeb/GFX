@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- HTML: Define a canvas with an id and optional width/height -->
+<canvas id="myCanvas" width="500" height="400">
+    Your browser does not support the <code>&lt;canvas&gt;</code> element.
+  </canvas>
+  <script>
+   // JavaScript: Getting the canvas element and context
+const canvas = document.getElementById("myCanvas");
+const ctx = canvas.getContext("2d");  // "2d" for 2D rendering context
+
+// Draw a rectangle normally
+ctx.fillStyle = "purple";
+ctx.fillRect(20, 20, 60, 30);  // draws at (20,20)
+
+// Move the origin and draw the same rectangle
+ctx.translate(100, 50);       // shift origin by (100,50)
+ctx.fillRect(20, 20, 60, 30);  // this rectangle is actually at (120,70) in the original coordinates
+
+// Rotate the canvas 45 degrees (around the new origin at (100,50))
+ctx.rotate((45 * Math.PI) / 180);  // 45 degrees in radians
+ctx.fillStyle = "orange";
+ctx.fillRect(20, 20, 60, 30);  // this rectangle is rotated 45° relative to the previous origin
+
+ctx.save();
+ctx.translate(100, 0);
+ctx.rotate(Math.PI/4);
+// draw some rotated stuff
+ctx.restore();  // back to original state (no translate/rotate)
+// draw more, unaffected by the prior transform
+
+</script>
+</body>
+</html>

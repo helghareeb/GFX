@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- HTML: Define a canvas with an id and optional width/height -->
+<canvas id="myCanvas" width="500" height="400">
+    Your browser does not support the <code>&lt;canvas&gt;</code> element.
+  </canvas>
+  <script>
+   // JavaScript: Getting the canvas element and context
+const canvas = document.getElementById("myCanvas");
+const ctx = canvas.getContext("2d");  // "2d" for 2D rendering context
+
+ctx.fillStyle = "#3498db";          // a blue color
+ctx.strokeStyle = "rgb(200, 0, 0)"; // red outline
+ctx.lineWidth = 4;
+
+ctx.beginPath();
+ctx.moveTo(300, 20);
+ctx.lineTo(380, 80);
+ctx.lineTo(300, 140);
+ctx.closePath();
+ctx.fill();    // fills the triangle with ctx.fillStyle (blue)
+ctx.stroke();  // outlines the triangle with ctx.strokeStyle (red), 4px thick
+
+  </script>
+</body>
+</html>

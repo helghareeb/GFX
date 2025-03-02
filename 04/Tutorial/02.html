@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- HTML: Define a canvas with an id and optional width/height -->
+<canvas id="myCanvas" width="500" height="400">
+    Your browser does not support the <code>&lt;canvas&gt;</code> element.
+  </canvas>
+  <script>
+   // JavaScript: Getting the canvas element and context
+const canvas = document.getElementById("myCanvas");
+const ctx = canvas.getContext("2d");  // "2d" for 2D rendering context
+// Set a fill color and draw a filled rectangle
+ctx.fillStyle = "steelblue";            // set fill color
+ctx.fillRect(25, 25, 100, 100);         // filled square at (25,25) with 100px sides
+
+// Clear a 60x60 area inside it (making a "hole")
+ctx.clearRect(45, 45, 60, 60);          // clear a smaller square inside
+
+// Set a stroke style and draw rectangle outline
+ctx.strokeStyle = "black";             // outline color
+ctx.lineWidth = 5;                     // line width for outline
+ctx.strokeRect(50, 50, 50, 50);        // draw outlined square inside the cleared area
+  </script>
+</body>
+</html>

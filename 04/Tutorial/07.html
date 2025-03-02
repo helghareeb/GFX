@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- HTML: Define a canvas with an id and optional width/height -->
+<canvas id="myCanvas" width="500" height="400">
+    Your browser does not support the <code>&lt;canvas&gt;</code> element.
+  </canvas>
+  <script>
+   // JavaScript: Getting the canvas element and context
+const canvas = document.getElementById("myCanvas");
+const ctx = canvas.getContext("2d");  // "2d" for 2D rendering context
+
+ctx.font = "20px Arial";             // set font size and family
+ctx.fillStyle = "black";
+ctx.fillText("Hello Canvas", 50, 50); // draw filled text at (50,50) ([HTML Canvas Text](https://www.w3schools.com/graphics/canvas_text.asp#:~:text=ctx.fillText%28))
+
+ctx.strokeStyle = "blue";
+ctx.lineWidth = 2;
+ctx.strokeText("Outline Text", 50, 80); // draw outlined text at (50,80)
+
+  </script>
+</body>
+</html>

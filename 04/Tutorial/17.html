@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+<canvas id="myCanvas" width="500" height="400">
+    Your browser does not support the <code>&lt;canvas&gt;</code> element.
+  </canvas>
+  <script>
+const canvas = document.getElementById("myCanvas");
+const ctx = canvas.getContext("2d");
+const FILL_COLOR = "skyblue";
+
+let rectX = 50, rectY = 50, rectW = 100, rectH = 80;
+// Draw initial rectangle
+ctx.fillStyle = FILL_COLOR;
+ctx.fillRect(rectX, rectY, rectW, rectH);
+let dragging = false;
+
+canvas.onmousedown = e => {
+  const x = e.offsetX, y = e.offsetY;
+  if (x > rectX && x < rectX + rectW && y > rectY && y < rectY + rectH) {
+    dragging = true;
+  }
+};
+canvas.onmouseup = () => { dragging = false; };
+canvas.onmousemove = e => {
+  if (dragging) {
+    rectX = e.offsetX - rectW / 2;
+    rectX = e.offsetX - rectW / 2;
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    ctx.fillStyle = FILL_COLOR;
+    ctx.fillRect(rectX, rectY, rectW, rectH);
+  }
+};
+</script>
+</body>
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- HTML: Define a canvas with an id and optional width/height -->
+<canvas id="myCanvas" width="500" height="400">
+    Your browser does not support the <code>&lt;canvas&gt;</code> element.
+  </canvas>
+  <script>
+   // JavaScript: Getting the canvas element and context
+const canvas = document.getElementById("myCanvas");
+const ctx = canvas.getContext("2d");  // "2d" for 2D rendering context
+
+const img = new Image();
+img.onload = function() {
+  // draw the image at (10, 10) at its natural size
+  ctx.drawImage(img, 10, 10);
+};
+img.src = "picture.png";
+</script>
+</body>
+</html>

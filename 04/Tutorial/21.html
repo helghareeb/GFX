@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ball Dodger Game</title>
+    <style>
+        body {
+            text-align: center;
+            font-family: Arial, sans-serif;
+        }
+        canvas {
+            background: #eee;
+            display: block;
+            margin: 20px auto;
+            border: 2px solid black;
+        }
+    </style>
+</head>
+<body>
+    <h1>Ball Dodger Game</h1>
+    <canvas id="gameCanvas" width="500" height="400"></canvas>
+    <script>
+        const canvas = document.getElementById("gameCanvas");
+        const ctx = canvas.getContext("2d");
+
+        const player = {
+            x: 225,
+            y: 350,
+            width: 50,
+            height: 50,
+            speed: 5
+        };
+
+        let obstacles = [];
+        let score = 0;
+        let gameRunning = true;
+
+        document.addEventListener("keydown", function(event) {
+            if (event.key === "ArrowLeft" && player.x > 0) {
+                player.x -= player.speed;
+            } else if (event.key === "ArrowRight" && player.x < canvas.width - player.width) {
+                player.x += player.speed;
+            }
+        });
+
+        function createObstacle() {
+            let size = Math.random() * 30 + 20;
+            obstacles.push({
+                x: Math.random() * (canvas.width - size),
+                y: 0,
+                width: size,
+                height: size,
+                speed: Math.random() * 3 + 2
+            });
+        }
+
+        function updateObstacles() {
+            for (let i = 0; i < obstacles.length; i++) {
+                obstacles[i].y += obstacles[i].speed;
+
+                if (
+                    player.x < obstacles[i].x + obstacles[i].width &&
+                    player.x + player.width > obstacles[i].x &&
+                    player.y < obstacles[i].y + obstacles[i].height &&
+                    player.y + player.height > obstacles[i].y
+                ) {
+                    gameRunning = false;
+                }
+            }
+            obstacles = obstacles.filter(obstacle => obstacle.y < canvas.height);
+        }
+
+        function drawPlayer() {
+            ctx.fillStyle = "blue";
+            ctx.fillRect(player.x, player.y, player.width, player.height);
+        }
+
+        function drawObstacles() {
+            ctx.fillStyle = "red";
+            for (let obstacle of obstacles) {
+                ctx.fillRect(obstacle.x, obstacle.y, obstacle.width, obstacle.height);
+            }
+        }
+
+        function drawScore() {
+            ctx.fillStyle = "black";
+            ctx.font = "20px Arial";
+            ctx.fillText("Score: " + score, 20, 30);
+        }
+
+        function gameLoop() {
+            if (!gameRunning) {
+                ctx.fillStyle = "black";
+                ctx.font = "30px Arial";
+                ctx.fillText("Game Over!", 180, 200);
+                ctx.fillText("Score: " + score, 190, 250);
+                return;
+            }
+
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            drawPlayer();
+            updateObstacles();
+            drawObstacles();
+            drawScore();
+
+            score++;
+
+            if (Math.random() < 0.02) {
+                createObstacle();
+            }
+
+            requestAnimationFrame(gameLoop);
+        }
+
+        gameLoop();
+    </script>
+</body>
+</html>

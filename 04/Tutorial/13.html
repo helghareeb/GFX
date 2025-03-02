@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- HTML: Define a canvas with an id and optional width/height -->
+<canvas id="myCanvas" width="500" height="400">
+    Your browser does not support the <code>&lt;canvas&gt;</code> element.
+  </canvas>
+  <script>
+   // JavaScript: Getting the canvas element and context
+const canvas = document.getElementById("myCanvas");
+const ctx = canvas.getContext("2d");  // "2d" for 2D rendering context
+
+let x = 0;
+function drawFrame() {
+  ctx.clearRect(0, 0, canvas.width, canvas.height); // clear previous frame ([Advanced animations - Web APIs | MDN](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial/Advanced_animations#:~:text=ctx,vy))
+  
+  // Draw a moving square
+  ctx.fillStyle = "red";
+  ctx.fillRect(x, 100, 50, 50);
+  
+  // Update position for next frame
+  x += 2;
+  if (x > canvas.width) {
+    x = -50; // reset square to start from left again (looping)
+  }
+  
+  requestAnimationFrame(drawFrame); // schedule next frame
+}
+drawFrame(); // start the animation
+</script>
+</body>
+</html>

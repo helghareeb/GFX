@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- HTML: Define a canvas with an id and optional width/height -->
+<canvas id="myCanvas" width="500" height="400">
+    Your browser does not support the <code>&lt;canvas&gt;</code> element.
+  </canvas>
+  <script>
+    // JavaScript: Get the canvas element by id
+    var canvas = document.getElementById('myCanvas');
+    // JavaScript: Get the 2d canvas context
+    var context = canvas.getContext('2d');
+    // JavaScript: Draw a rectangle
+    context.fillStyle = 'red';
+    context.fillRect(10, 10, 100, 100);
+  </script>
+</body>
+</html>

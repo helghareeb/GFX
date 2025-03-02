@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+<canvas id="myCanvas" width="500" height="400">
+    Your browser does not support the <code>&lt;canvas&gt;</code> element.
+  </canvas>
+  <script>
+const canvas = document.getElementById("myCanvas");
+const ctx = canvas.getContext("2d");
+const FILL_COLOR = "skyblue";
+
+// Draw a blue and a red overlapping square normally (source-over)
+ctx.globalCompositeOperation = "source-over";
+ctx.fillStyle = "blue";
+ctx.fillRect(20, 20, 60, 60);
+ctx.fillStyle = "red";
+ctx.fillRect(50, 50, 60, 60);  // overlaps part of blue
+
+
+</script>
+</body>
+</html>

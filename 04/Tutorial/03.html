@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- HTML: Define a canvas with an id and optional width/height -->
+<canvas id="myCanvas" width="500" height="400">
+    Your browser does not support the <code>&lt;canvas&gt;</code> element.
+  </canvas>
+  <script>
+   // JavaScript: Getting the canvas element and context
+const canvas = document.getElementById("myCanvas");
+const ctx = canvas.getContext("2d");  // "2d" for 2D rendering context
+
+ctx.beginPath();          // start a new path
+ctx.moveTo(50, 50);       // start at (50,50)
+ctx.lineTo(150, 50);      // draw line to (150,50)
+ctx.lineTo(150, 150);     // draw line to (150,150)
+ctx.lineTo(50, 150);      // draw line to (50,150)
+// At this point we've defined a rectangle path from (50,50) through (150,150)
+// Optionally, close the path (will connect back to starting point)
+ctx.closePath();
+ctx.strokeStyle = "green";
+ctx.stroke();             // draw the outline of the path in green
+
+
+  </script>
+</body>
+</html>
